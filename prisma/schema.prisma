@@ -12,7 +12,7 @@ datasource db {
 
 model Account {
     id                String  @id @default(auto()) @map("_id") @db.ObjectId
-    userId            String
+    userId            String  @db.ObjectId
     type              String
     provider          String
     providerAccountId String
@@ -32,7 +32,7 @@ model Account {
 model Session {
     id           String   @id @default(auto()) @map("_id") @db.ObjectId
     sessionToken String   @unique
-    userId       String
+    userId       String   @db.ObjectId
     expires      DateTime
     user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
@@ -54,4 +54,15 @@ model VerificationToken {
     expires    DateTime
 
     @@unique([identifier, token])
+}
+
+model Kingdom {
+    id     String @id @default(auto()) @map("_id") @db.ObjectId
+    userid String
+    name   String
+    race   Int
+    turns  Int
+    land   Int
+    pop    Int
+    money  Int
 }
