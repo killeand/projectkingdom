@@ -15,5 +15,5 @@ header nav {
 }
 
 header nav a {
-    @apply btn btn-info;
+    @apply btn btn-info btn-sm;
 }
